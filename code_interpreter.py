@@ -3,10 +3,13 @@ import os
 from crewai import Agent, Task, Crew
 # Importing crewAI tools
 from crewai_tools import CodeInterpreterTool
+from dotenv import load_dotenv
 text_holder=st.text_area("Enter your code",value=None)
 # text_holder
 tools=CodeInterpreterTool()
-os.environ['GROQ_API_KEY'] = "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"
+load_dotenv()
+os.environ['GROQ_API_KEY'] = os.getenv['GROQ_API_KEY']
+
 interpreter=Agent(
     role = "Code Interpreter",
     goal= "To create a seamless platform for interpreting, debugging, and learning code, empowering developers to innovate effortlessly.",
